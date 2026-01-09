@@ -1,0 +1,250 @@
+﻿/* ================================ 
+   1. ROOT & GLOBAL SETTINGS
+================================ */
+:root {
+    --bg-color: #0d0d0d; /* Deep cinematic black */
+    --accent-blue: #00a8cc; /* Your signature blue */
+    --text-main: #ffffff;
+    --text-gray: #a0a0a0;
+    --muted-text: #707070;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(0, 168, 204, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+    html::-webkit-scrollbar, body::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+/* Particles Layer */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* ================================ 
+   2. HEADER & NAVIGATION
+================================ */
+header {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 100;
+    background: transparent;
+    animation: fadeInNav 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInNav {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-gray);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s ease;
+    }
+
+        .nav-links a:hover,
+        .nav-links li a[href="resume.html"] {
+            color: var(--accent-blue);
+        }
+
+.contact-info {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-main);
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+    .contact-info span {
+        display: block;
+    }
+
+/* ================================ 
+   3. DASHBOARD GRID & COLUMNS
+================================ */
+.dashboard-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 90px 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 25px;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+    /* Thin custom scrollbar for columns */
+    .column::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .column::-webkit-scrollbar-thumb {
+        background: var(--glass-border);
+        border-radius: 10px;
+    }
+
+/* ================================ 
+   4. GLASS CARD SYSTEM (UNIFIED BORDERS)
+================================ */
+/* Applying the border style to ALL sections */
+.skill-group,
+.timeline,
+.education-item,
+.projects-section,
+.certificates-section,
+.capability-item,
+.hobbies,
+.info-block {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+    /* Hover effect for cards */
+    .skill-group:hover, .timeline:hover, .projects-section:hover {
+        border: 1px solid rgba(0, 168, 204, 0.4);
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+/* ================================ 
+   5. TYPOGRAPHY & ELEMENTS
+================================ */
+h3 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--accent-blue);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.date {
+    font-size: 0.7rem;
+    color: var(--accent-blue);
+    font-weight: bold;
+    background: rgba(0, 168, 204, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.subtext {
+    color: var(--muted-text);
+    font-size: 0.8rem;
+}
+
+/* Skill Tags */
+.skills-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    background: rgba(0, 168, 204, 0.1);
+    border: 1px solid var(--glass-border);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    color: var(--text-main);
+}
+
+/* Hobby Icons */
+.hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.icon-circle {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--accent-blue);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent-blue);
+}
+
+/* ================================ 
+   6. RESPONSIVE
+================================ */
+@media (max-width: 1100px) {
+    .content-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        overflow-y: auto;
+    }
+
+    .dashboard-container {
+        overflow-y: auto;
+    }
+}

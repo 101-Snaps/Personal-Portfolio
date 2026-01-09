@@ -1,0 +1,230 @@
+﻿/* ================================ 
+   1. ROOT & GLOBAL 
+================================ */
+:root {
+    --bg-color: #0d0d0d;
+    --accent-color: #00a8cc;
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: var(--text-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Home page is a cinematic fixed view */
+}
+
+/* ================================ 
+   2. THE 3-LAYER BACKGROUND SYSTEM
+================================ */
+
+/* LAYER 1: The Image (Bottom) */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('background.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    position: relative;
+    z-index: 1;
+}
+
+/* LAYER 2: The Particles (Middle) */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Sits on top of the image */
+    background-color: transparent !important;
+    pointer-events: none; /* Allows clicks to pass through to buttons */
+}
+
+/* LAYER 3: The Content (Top) */
+.hero-content, header, .hero-socials {
+    position: relative;
+    z-index: 10; /* Ensures text and buttons are always clickable and visible */
+}
+
+/* ================================ 
+   3. HEADER & NAVIGATION
+================================ */
+header {
+    position: fixed;
+    top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    animation: fadeInNav 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInNav {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-gray);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: 0.3s;
+    }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+.contact-info {
+    text-align: right;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ================================ 
+   4. TYPEWRITER ANIMATION
+================================ */
+.hero-content h2,
+.hero-content h1,
+.hero-content .subtitle {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--accent-color);
+    width: 0;
+}
+
+.first-name {
+    animation: typing 1s steps(20, end) forwards, blink-caret 0.75s step-end 2;
+}
+
+.last-name {
+    animation: typing 1s steps(20, end) 1s forwards, blink-caret 0.75s step-end 2 1s;
+}
+
+.subtitle {
+    animation: typing 1s steps(20, end) 2s forwards, blink-caret 0.75s step-end infinite 2s;
+    font-size: 1.1rem;
+    letter-spacing: 5px;
+    color: var(--accent-color);
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--accent-color)
+    }
+}
+
+/* ================================ 
+   5. BUTTONS & SOCIALS
+================================ */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 35px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    border: 1px solid var(--text-white);
+    color: var(--text-white);
+}
+
+.btn-primary {
+    background: var(--text-white);
+    color: #000;
+}
+
+    .btn-primary:hover {
+        background: transparent;
+        color: #fff;
+    }
+
+.hero-socials {
+    position: absolute;
+    bottom: 40px;
+    left: 10%;
+    display: flex;
+    gap: 25px;
+}
+
+    .hero-socials a {
+        color: var(--text-white);
+        font-size: 1.2rem;
+        transition: 0.3s;
+    }
+
+        .hero-socials a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+/* Update these lines in your CSS */
+
+.hero-content h2 {
+    font-weight: 300;
+    /* Increase the 4rem to something like 5rem */
+    font-size: clamp(2rem, 5vw, 5rem);
+    letter-spacing: 15px;
+    margin-bottom: -10px;
+}
+
+.hero-content h1 {
+    font-weight: 900;
+    /* Increase the 6rem to something like 8rem */
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.9;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    /* Increase the 1.1rem to 1.5rem */
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    letter-spacing: 5px;
+    /* ... rest of code */
+}
